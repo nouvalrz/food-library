@@ -10,6 +10,7 @@ import "react-responsive-modal/styles.css";
 import { useState } from "react";
 import Button from "@/ui/Button";
 import { toast } from "sonner";
+import { ArrowLeft } from "lucide-react";
 
 const FoodDetailClient = ({ foodDetail }) => {
   const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
@@ -80,9 +81,14 @@ const FoodDetailClient = ({ foodDetail }) => {
 
   return (
     <div className="max-w-2xl mx-auto py-12">
-      <Link href="/" className="bg-gray-300 px-3 py-1">
-        Back to home
+      <Link
+        href="/foods"
+        className="bg-gray-100 px-3 py-1 rounded inline-flex gap-1  mb-4"
+      >
+        <ArrowLeft className="size-4" />
+        Kembali
       </Link>
+      <h1 className="text-center text-2xl font-semibold my-6">Edit Resep</h1>
       <FoodForm
         form={form}
         onSubmit={updateFood}

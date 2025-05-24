@@ -45,6 +45,9 @@ const AddFoodClient = () => {
   return (
     <div className="my-12">
       <div className="max-w-2xl mx-auto">
+        <h1 className="text-center text-2xl font-semibold my-6">
+          Tambah Resep
+        </h1>
         <FoodForm form={form} onSubmit={addFood} />
       </div>
     </div>

@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import React from "react";
-import Button from "../Button";
+import Button from "./Button";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
-const Header = () => {
+const Header = ({ loggedIn }) => {
   const pathname = usePathname();
   return (
     <div className="w-full fixed top-0 left-0 py-4 px-8 bg-white justify-between flex items-center z-50">
@@ -34,19 +34,17 @@ const Header = () => {
         >
           Foods
         </Link>
-        <Link
-          href="/about"
-          className={clsx({
-            "text-amber-500 font-semibold underline": pathname === "/about",
-          })}
-        >
-          About
-        </Link>
       </div>
 
-      <Link href="/foods/add">
-        <Button title="Add Food" className="bg-white! text-gray-800!" />
-      </Link>
+      {loggedIn ? (
+        <Link href="/foods/add">
+          <Button title="Add Food" className="bg-amber-500!" />
+        </Link>
+      ) : (
+        <Link href="/login">
+          <Button title="Login" className="bg-amber-500!" />
+        </Link>
+      )}
     </div>
   );
 };

@@ -18,8 +18,8 @@ const page = async () => {
   return (
     <div className="flex flex-col items-center my-8">
       <div className="text-center my-10">
-        <h1 className="font-bold text-3xl">Food Library 🍽️</h1>
-        <p>Everything About Food, All in One Place.</p>
+        <h1 className="font-bold text-3xl">KokiRumahan</h1>
+        <p>Semua resep ada disini</p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-4xl">
         {foods.map((food, index) => (
