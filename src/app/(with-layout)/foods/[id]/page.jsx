@@ -3,6 +3,10 @@ import FoodDetailClient from "./FoodDetailClient";
 import { cookies } from "next/headers";
 import { API_URL, API_KEY } from "@/lib/api";
 
+export const metadata = {
+  title: "Detail Resep",
+};
+
 const page = async ({ params }) => {
   const { id } = await params;
   const cookiesStore = await cookies();

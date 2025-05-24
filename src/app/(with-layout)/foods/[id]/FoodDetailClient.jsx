@@ -14,6 +14,7 @@ import { ArrowLeft } from "lucide-react";
 
 const FoodDetailClient = ({ foodDetail }) => {
   const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
   const router = useRouter();
   const form = useForm(
     {
@@ -58,6 +59,7 @@ const FoodDetailClient = ({ foodDetail }) => {
   };
 
   const deleteFood = async () => {
+    setDeleteLoading(true);
     try {
       const response = await fetch("/api/delete-food/" + form.values.id, {
         method: "DELETE",
@@ -77,6 +79,7 @@ const FoodDetailClient = ({ foodDetail }) => {
     } catch (error) {
       toast.error(error.message);
     }
+    setDeleteLoading(false);
   };
 
   return (
@@ -102,7 +105,12 @@ const FoodDetailClient = ({ foodDetail }) => {
           Apakah anda yakin menghapus{" "}
           <span className="font-medium">{foodDetail.name}</span>?
         </p>
-        <Button title="Yakin" className="w-auto! mt-4" onClick={deleteFood} />
+        <Button
+          title="Yakin"
+          className="w-auto! mt-4"
+          onClick={deleteFood}
+          loading={deleteLoading}
+        />
       </Modal>
     </div>
   );

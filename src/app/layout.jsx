@@ -21,7 +21,7 @@ export const metadata = {
   description: "Cari resep dari chef ternama disini",
   keywords: ["resep", "masakan", "kuliner", "makanan"],
   icons: {
-    icon: "./koki-rumahan-logo.svg",
+    icon: "/koki-rumahan-logo.svg",
   },
 };
 

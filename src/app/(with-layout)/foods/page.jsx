@@ -2,6 +2,10 @@ import { API_KEY, API_URL } from "@/lib/api";
 import FoodCard from "@/ui/foods/FoodCard";
 import { cookies } from "next/headers";
 
+export const metadata = {
+  title: "Daftar Resep",
+};
+
 const page = async () => {
   const cookiesStore = await cookies();
   const token = cookiesStore.get("token")?.value;

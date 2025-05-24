@@ -5,6 +5,7 @@ import Input from "../Input";
 import Button from "../Button";
 import { useRouter } from "next/navigation";
 import BaseCard from "../BaseCard";
+import { Loader2 } from "lucide-react";
 
 const FoodForm = ({ form, onSubmit, onDelete, isEdit = false }) => {
   const router = useRouter();
@@ -113,7 +114,7 @@ const FoodForm = ({ form, onSubmit, onDelete, isEdit = false }) => {
           )}
         </div>
         {loading ? (
-          <p>loading...</p>
+          <Loader2 className="animate-spin" />
         ) : isEdit ? (
           <div className="flex gap-4 w-full">
             <Button
