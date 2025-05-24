@@ -5,8 +5,13 @@ import FoodForm from "@/ui/foods/FoodForm";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { foodValidation } from "@/lib/foods/foodValidation";
+import Modal from "@/ui/Modal";
+import "react-responsive-modal/styles.css";
+import { useState } from "react";
+import Button from "@/ui/Button";
 
 const FoodDetailClient = ({ foodDetail }) => {
+  const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
   const router = useRouter();
   const form = useForm(
     {
@@ -19,6 +24,10 @@ const FoodDetailClient = ({ foodDetail }) => {
     },
     foodValidation
   );
+
+  const toggleModalDelete = () => {
+    setModalDeleteOpen(!modalDeleteOpen);
+  };
 
   const updateFood = async () => {
     try {
@@ -48,10 +57,6 @@ const FoodDetailClient = ({ foodDetail }) => {
   };
 
   const deleteFood = async () => {
-    if (!confirm("Are you sure want to delete this food?")) {
-      return;
-    }
-
     try {
       const response = await fetch("/api/delete-food/" + form.values.id, {
         method: "DELETE",
@@ -82,9 +87,18 @@ const FoodDetailClient = ({ foodDetail }) => {
       <FoodForm
         form={form}
         onSubmit={updateFood}
-        onDelete={deleteFood}
+        onDelete={toggleModalDelete}
         isEdit
       />
+
+      <Modal open={modalDeleteOpen} onClose={toggleModalDelete}>
+        <h1 className="font-medium">Konfirmasi</h1>
+        <p className="mt-4">
+          Apakah anda yakin menghapus{" "}
+          <span className="font-medium">{foodDetail.name}</span>?
+        </p>
+        <Button title="Yakin" className="w-auto! mt-4" onClick={deleteFood} />
+      </Modal>
     </div>
   );
 };
