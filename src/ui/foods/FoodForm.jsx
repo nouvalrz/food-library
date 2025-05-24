@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Input from "../Input";
 import Button from "../Button";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 
 const FoodForm = ({ form, onSubmit, onDelete, isEdit = false }) => {

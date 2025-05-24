@@ -1,8 +1,17 @@
+import { API_KEY, API_URL } from "@/lib/api";
 import FoodCard from "@/ui/foods/FoodCard";
-import React from "react";
+import { cookies } from "next/headers";
 
 const page = async () => {
-  const response = await fetch("http://localhost:3000/api/foods");
+  const token = cookies().get("token")?.value;
+  const response = await fetch(API_URL + "/foods", {
+    method: "GET",
+    headers: {
+      apiKey: API_KEY,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
   const foods = (await response.json()).data;
 
   return (

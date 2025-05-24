@@ -1,10 +1,20 @@
 import React from "react";
 import FoodDetailClient from "./FoodDetailClient";
+import { cookies } from "next/headers";
+import { API_URL, API_KEY } from "@/lib/api";
 
 const page = async ({ params }) => {
   const { id } = params;
 
-  const response = await fetch("http://localhost:3000/api/foods/" + id);
+  const token = cookies().get("token")?.value;
+  const response = await fetch(API_URL + "/foods/" + id, {
+    method: "GET",
+    headers: {
+      apiKey: API_KEY,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
   const foodDetail = (await response.json()).data;
 
   return (
