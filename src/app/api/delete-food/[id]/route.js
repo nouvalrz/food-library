@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { API_URL, API_KEY } from "@/lib/api";
 
 export async function DELETE(request, { params }) {
-  const { id } = params
+  const { id } = await params
 
   const token = request.cookies.get("token")?.value;
 

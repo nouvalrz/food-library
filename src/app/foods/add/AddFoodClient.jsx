@@ -3,6 +3,7 @@ import useForm from "@/hooks/useForm";
 import { foodValidation } from "@/lib/foods/foodValidation";
 import FoodForm from "@/ui/foods/FoodForm";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const foodInitialValues = {
   name: "",
@@ -34,10 +35,10 @@ const AddFoodClient = () => {
             : error.errors || error.message || "Something went wrong"
         );
       }
-      alert("Food added successfully");
-      router.replace("/");
+      toast.success("Berhasil menambah makanan!");
+      router.replace("/foods");
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 

@@ -4,9 +4,9 @@ import { cookies } from "next/headers";
 import { API_URL, API_KEY } from "@/lib/api";
 
 const page = async ({ params }) => {
-  const { id } = params;
-
-  const token = cookies().get("token")?.value;
+  const { id } = await params;
+  const cookiesStore = await cookies();
+  const token = cookiesStore.get("token")?.value;
   const response = await fetch(API_URL + "/foods/" + id, {
     method: "GET",
     headers: {

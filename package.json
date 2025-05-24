@@ -13,7 +13,8 @@
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-responsive-modal": "^6.4.2"
+    "react-responsive-modal": "^6.4.2",
+    "sonner": "^2.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

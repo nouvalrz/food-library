@@ -5,6 +5,7 @@ import useForm from "@/hooks/useForm";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { loginFormValidation } from "@/lib/login/loginFormValidation";
+import { toast } from "sonner";
 
 const loginFormInitialValues = {
   email: "",
@@ -31,8 +32,11 @@ const LoginClient = () => {
       if (!response.ok) {
         throw new Error(responseData.message);
       }
+
+      router.replace("/foods");
+      toast.success("Selamat datang di Food Library");
     } catch (error) {
-      alert(error);
+      toast.error(error.toString());
     }
     setLoading(false);
   };

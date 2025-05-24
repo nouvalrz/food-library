@@ -9,6 +9,7 @@ import Modal from "@/ui/Modal";
 import "react-responsive-modal/styles.css";
 import { useState } from "react";
 import Button from "@/ui/Button";
+import { toast } from "sonner";
 
 const FoodDetailClient = ({ foodDetail }) => {
   const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
@@ -48,11 +49,10 @@ const FoodDetailClient = ({ foodDetail }) => {
         );
       }
 
-      // router.refresh();
-      alert("Food updated successfully");
-      window.location.reload(); // hard reload
+      toast.success("Berhasil memperbarui makanan!");
+      router.refresh();
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -71,11 +71,10 @@ const FoodDetailClient = ({ foodDetail }) => {
         );
       }
 
-      // router.refresh();
-      alert("Food deleted successfully");
-      router.replace("/");
+      toast.success("Makanan berhasil dihapus!");
+      router.replace("/foods");
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   };
 

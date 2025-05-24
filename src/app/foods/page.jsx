@@ -3,7 +3,8 @@ import FoodCard from "@/ui/foods/FoodCard";
 import { cookies } from "next/headers";
 
 const page = async () => {
-  const token = cookies().get("token")?.value;
+  const cookiesStore = await cookies();
+  const token = cookiesStore.get("token")?.value;
   const response = await fetch(API_URL + "/foods", {
     method: "GET",
     headers: {
