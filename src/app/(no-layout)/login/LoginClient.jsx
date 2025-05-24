@@ -43,7 +43,11 @@ const LoginClient = () => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
-      <div className="w-full max-w-[400px]">
+      <div className="flex gap-2 items-center">
+        <img src="./koki-rumahan-logo.svg" className="w-10 h-10" />
+        <p className="font-bold font-[Quicksand] text-base">KokiRumahan</p>
+      </div>
+      <div className="w-full max-w-[400px] mt-8">
         <LoginForm form={form} handleLogin={handleLogin} loading={loading} />
       </div>
     </div>

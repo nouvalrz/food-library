@@ -25,7 +25,7 @@ const Input = ({
         id={id}
         placeholder={placeholder}
         className={clsx(
-          "block border border-gray-300 w-full p-2 mt-1",
+          "block border border-gray-200 w-full p-2 mt-1 rounded",
           className
         )}
       />

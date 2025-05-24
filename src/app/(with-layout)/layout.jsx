@@ -6,8 +6,10 @@ const layout = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <div className="flex-1 mt-4">{children}</div>
-      <Footer />
+      <div className="flex-1 mt-4 px-2">{children}</div>
+      <div className="container mx-auto">
+        <Footer />
+      </div>
     </div>
   );
 };

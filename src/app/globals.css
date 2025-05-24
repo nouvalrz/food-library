@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 body {
-  @apply bg-gray-100;
+  @apply font-[Geist];
+  @apply bg-white;
   @apply text-sm text-gray-800;
 }
